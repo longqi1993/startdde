@@ -31,6 +31,7 @@ import (
 
 type configInfo struct {
 	AllowSwitch bool   `json:"allow_switch"`
+	Wait        bool   `json:"wait"`
 	LastWM      string `json:"last_wm"`
 }
 
@@ -101,6 +102,7 @@ func doLoadSwConfig(file string) (*configInfo, error) {
 	var info configInfo
 	// fix no 'allow_switch' in config
 	info.AllowSwitch = true
+	info.Wait = true
 	err = json.Unmarshal(contents, &info)
 	if err != nil {
 		return nil, err
